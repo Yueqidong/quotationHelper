@@ -1,0 +1,35 @@
+<template name="deleteProduct">
+  <br>
+  {{#if isInRole 'admin'}}
+  <div style="text-align:center">
+    <h2>The list of available products</h2>
+    {{>productList}}
+  </div>
+  {{/if}}
+</template>
+
+<template name="productList">
+  <table class="table table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th style="text-align:center">Product SKU</th>
+      <th style="text-align:center">Unit Price</th>
+      <th style="text-align:center">Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each product}}
+    <tr>
+    <td>{{productSKU}}</td>
+    <td>{{price}}</td>
+    <td>{{description}}</td>
+    <td><input type="button" class="btn btn-danger delete" value="Delete"></td>
+    </tr>
+    {{/each}}
+  </tbody>
+  </table>
+
+
+</template>

@@ -1,0 +1,39 @@
+<template name="changePwd">
+  <!-- Only if user logins into the system, the function can be seen and used. -->
+  {{#if currentUser}}
+  <div style="text-align:center;">
+    <h2>Change Password</h2>
+  </div>
+  <br>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+
+      <label class="col-lg-3 control-label">Old Password :</label>
+      <div class="col-lg-6">
+        <input type="password" class="form-control" name="oldPassword" placeholder="Your old password" required>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">New Password :</label>
+      <div class="col-lg-6">
+        <input type="password" class="form-control" name="newPassword" placeholder="Your new password" required>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">New Password :</label>
+      <div class="col-lg-6">
+        <input type="password" class="form-control" name="confirmPassword" placeholder="Repeat your new password" required>
+      </div>
+    </div>
+    <br>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block "/>
+  </form>
+  {{/if}}
+</template>
