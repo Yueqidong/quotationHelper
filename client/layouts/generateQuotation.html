@@ -1,0 +1,46 @@
+<template name="generateQuotation">
+  <!-- Only if user logins into the system, the function can be seen and used. -->
+  {{#if currentUser}}
+  <div style="text-align:center;">
+    <h2>Generate a quotation</h2>
+  </div>
+  <br>
+
+  <form class="form-horizontal" role="form">
+    <br>
+    <div class="">
+      <label>Product SKU:</label>
+        <select name="productSKU[]" class="form-control">
+          {{#each product}}
+            <option>{{productSKU}}</option>
+          {{/each}}
+        </select>
+    </div>
+    <br>
+    <br>
+    <div class="quantity">
+      <label>Quantity:</label>
+        <input type="number" min="1" class="form-control" name="quantity[]" required>
+    </div>
+    <br>
+    <br>
+    <label>Select a discount:</label>
+      <select name="discount" class="form-control">
+          <option value="1">No discount</option>
+          <option value="0.95">5% OFF</option>
+          <option value="0.85">15% OFF</option>
+      </select>
+    <br>
+    <br>
+    <input type="button" class="btn btn-success add" value="Add one more product">
+    <input type="button" class="btn btn-danger remove" value="Remove">
+    <br>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
+    <br>
+    <input type="button" class="btn btn-primary btn-lg btn-block saveAndPrint" value="Save and print">
+    <br>
+    <input type="button" class="btn btn-primary btn-lg btn-block saveAndEmail" value="Save and email">
+  </form>
+  {{/if}}
+</template>

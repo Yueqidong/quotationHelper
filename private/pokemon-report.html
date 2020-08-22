@@ -1,0 +1,85 @@
+<div id="pageHeader">Mayang Sari Sdn Bhd </div>
+<div id="pageHeader">No 11, Jalan 11/11, Taman Industri Mayang, Batu 12, Jalan Mayang, 47000 Sari, Selangor, Malaysia </div>
+<div id="pageHeader">Telephone: +603-111111 </div>
+<style>
+/*adding row numbers through css*/
+.css-serial {
+   counter-reset: serial-number; /* Set the serial number counter to 0 */
+}
+
+   .css-serial td:first-child:before {
+       counter-increment: serial-number; /* Increment the serial number counter */
+       content: counter(serial-number); /* Display the counter */
+   }
+
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1 class="text-center">Quotation for electronic component</h1>
+        </div>
+    </div>
+    <div align="left">
+      {{#each quotation}}
+      <label>Reference ID: {{quotationID}}</label>
+      <br>
+      <br>
+      <label>{{companyName}}</label>
+      <label>{{companyAddress}}</label>
+      {{/each}}
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <table class="table table-bordered" width="100%">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th style="text-align:center">NO.</th>
+              <th style="text-align:center">Product SKU</th>
+              <th style="text-align:center">Description</th>
+              <th style="text-align:center">Unit Price (RM)</th>
+              <th style="text-align:center">Quantity</th>
+              <th style="text-align:center">Total price (RM)</th>
+            </tr>
+          </thead>
+          <tbody class="css-serial">
+            {{#each quotation}}
+            {{#each invoice}}
+                <tr style="text-align:center">
+                  <td></td>
+                  <td>{{productSKU}}</td>
+                  <td>{{description}}</td>
+                  <td>{{price}}</td>
+                  <td>{{quantity}}</td>
+                  <td>{{subtotal}}</td>
+                </tr>
+            {{/each}}
+            {{/each}}
+          </tbody>
+          <tr style="text-align:center">
+            <td colspan="5">Subtotal</td>
+            <td>{{{getTotal}}}</td>
+          </tr>
+          <tr style="text-align:center">
+            <td colspan="5">SST 6%</td>
+            <td>{{{getTax}}}</td>
+          </tr>
+          <tr style="text-align:center">
+            <td colspan="5">{{{getDiscount}}}</td>
+            <td>{{{getDiscountAmount}}}</td>
+          </tr>
+          <tr style="text-align:center">
+            <td colspan="5">G.Total</td>
+            <td>{{{getFinal}}}</td>
+          </tr>
+          </table>
+        </div>
+    </div>
+    <div align="left">
+    <label>Date: {{{getDate}}}</label>
+    </div>
+</div>
+<div id="pageFooter">Terms & Condition</div>
+<div id="pageFooter">1. This quotation is valid for this project only</div>
+<div id="pageFooter">2. Split delivery will nullify the above quotation</div>
+<div id="pageFooter">3. All price quoted are subjected to 6% SST</div>

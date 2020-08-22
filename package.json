@@ -1,0 +1,27 @@
+{
+  "name": "quotationHelper",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "bcrypt": "^4.0.1",
+    "meteor-node-stubs": "^1.0.0",
+    "moment": "^2.27.0",
+    "papaparse": "^5.2.0",
+    "simpl-schema": "^1.7.3",
+    "sweetalert": "^2.1.2",
+    "webshot-node": "^0.18.2"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  }
+}
