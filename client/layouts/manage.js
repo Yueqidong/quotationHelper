@@ -23,7 +23,7 @@ Template.usersList.helpers({
       for(let i = 0; i<result.length; i++){
         var lastLogin=result[i].status.lastLogin.date;
         var days = currentDate.diff(lastLogin,'hours');
-        if(days >=24){
+        if(days >=24*180){
           nonactive.push(result[i]);
         }
       }
@@ -33,7 +33,7 @@ Template.usersList.helpers({
       for(let i = 0; i<result.length; i++){
         var lastLogin=result[i].status.lastLogin.date;
         var days = currentDate.diff(lastLogin,'days');
-        if(days <=30){
+        if(days <=30*24){
           monthlyactive.push(result[i]);
         }
       }
@@ -43,7 +43,7 @@ Template.usersList.helpers({
       for(let i = 0; i<result.length; i++){
         var lastLogin=result[i].status.lastLogin.date;
         var days = currentDate.diff(lastLogin,'days');
-        if(days <=365){
+        if(days <=365*24){
           yearlyactive.push(result[i]);
         }
       }

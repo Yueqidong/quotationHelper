@@ -32,15 +32,23 @@ Template.registerDate.helpers({
     var daily = 0;
     var weekly = 0;
     var monthly = 0;
+    var yearly = 0;
     var dayArray = [];
     for(let i = 0; i<num; i++){
       var aDate = doc[i].createdAt;
       var result = currentDate.diff(aDate,'hours');
-      if (result >= 20){
+      if (result <= 24){
         var daily = daily+1;
+      }else if(result <= 24*7 && result>24){
+        var weekly = weekly+1;
+      }else if(result <=24*30 && result>24*7){
+        var monthly = monthly+1;
+      }else if (result>24*30){
+        var yearly=yearly+1;
       }
+      console.log(result)
     }
-    dayArray.push(daily,weekly,monthly);
+    dayArray.push(daily,weekly,monthly,yearly);
     console.log(daily);
     console.log(dayArray);
     return dayArray;
